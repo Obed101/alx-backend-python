@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Annotation of list of floats"""
+import typing
 
 
-def sum_list(input_list: list) -> float:
+def sum_list(input_list: typing.list[float]) -> float:
     """Adds everything in input_list"""
     a: float = 0.00
     for i in input_list:
