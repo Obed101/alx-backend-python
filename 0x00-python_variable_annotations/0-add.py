@@ -5,4 +5,4 @@ def add(a: float, b: float):
     """This function adds two arguments
     and makes sure they are floats
     """
-    return a + b
+    return float(a + b)
