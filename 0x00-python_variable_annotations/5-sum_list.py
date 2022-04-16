@@ -3,7 +3,7 @@
 import typing
 
 
-def sum_list(input_list: typing.list[float]) -> float:
+def sum_list(input_list: typing.List[float]) -> float:
     """Adds everything in input_list"""
     a: float = 0.00
     for i in input_list:
