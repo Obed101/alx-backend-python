@@ -7,5 +7,3 @@ from typing import Sequence, Tuple, List, Iterable
 def element_length(lst: Iterable[Sequence]) -> List[Tuple[Sequence, int]]:
     """ sequencially returns a tuple """
     return [(i, len(i)) for i in lst]
-
-print(element_length.__annotations__)
