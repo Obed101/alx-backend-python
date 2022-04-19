@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
-""" This module uses async's concurrent coroutines """
-
+"""contains wait_n coroutine"""
 import asyncio
 from typing import List
 
 wait_random = __import__('0-basic_async_syntax').wait_random
 
 
-async def wait_n(n: int, delay: int) -> List[float]:
-    """ Uses a concurrent coroutine to spawn wait_random n times """
-    tasks = [asyncio.create_task(wait_random(delay)) for _ in range(n)]
-    one_time = [await wait for wait in asyncio.as_completed(tasks)]
-    return one_time
+async def wait_n(n: int, max_delay: int) -> List[float]:
+    """calls wait_random n times"""
+    wait_times: List[float] = []
+    for f in asyncio.as_completed([wait_random(max_delay) for i in range(n)]):
+        res = await f
+        wait_times.append(res)
+    return wait_times
