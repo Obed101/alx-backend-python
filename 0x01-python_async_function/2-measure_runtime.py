@@ -1,15 +1,10 @@
 #!/usr/bin/env python3
-""" This module uses the time module to calculate elapse time """
+"""contains task_wait_random function"""
 import asyncio
-import time
-from typing import List
 
-wait_n = __import__('1-concurrent_coroutines').wait_n
+wait_random = __import__('0-basic_async_syntax').wait_random
 
 
-def measure_time(n: int, max_delay: int) -> float:
-    """ calculates the runtime """
-    start = time.perf_counter()
-    asyncio.run(wait_n(n, max_delay))
-    elapsed = time.perf_counter() - start
-    return float(elapsed / n)
+def task_wait_random(max_delay: int) -> asyncio.Task:
+    """returns asyncio.Task"""
+    return asyncio.create_task(wait_random(max_delay))
