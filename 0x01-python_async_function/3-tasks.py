@@ -1,12 +1,10 @@
 #!/usr/bin/env python3
-""" This module impletemts asyncio.Task """
-
+"""contains task_wait_random function"""
 import asyncio
 
 wait_random = __import__('0-basic_async_syntax').wait_random
 
 
-def task_wait_random(delay: int) -> asyncio.Task:
-    """ returns a <asyncio.Task> object from wait_random """
-    task = asyncio.create_task(wait_random(delay))
-    return task
+def task_wait_random(max_delay: int) -> asyncio.Task:
+    """returns asyncio.Task"""
+    return asyncio.create_task(wait_random(max_delay))
