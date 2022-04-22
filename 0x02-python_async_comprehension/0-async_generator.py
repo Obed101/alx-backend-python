@@ -5,8 +5,9 @@ import asyncio
 import random
 from typing import Iterator
 
+
 async def async_generator() -> Iterator[int]:
-    """ This function uses async comprehension
+    """ This function uses async generator
     to generate numbers
     """
     for _ in range(10):
