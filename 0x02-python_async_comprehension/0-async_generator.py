@@ -6,10 +6,10 @@ import random
 from typing import Iterator
 
 
-async def async_generator() -> Iterator[int]:
+async def async_generator() -> Iterator[float]:
     """ This function uses async generator
     to generate numbers
     """
     for _ in range(10):
         await asyncio.sleep(1)
-        yield random.randint(0, 10)
+        yield float(random.randint(0, 10))
