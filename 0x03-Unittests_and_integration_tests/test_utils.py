@@ -13,10 +13,6 @@ class TestAccessNestedMap(unittest.TestCase):
         [{"a": {"b": 2}}, ("a",)],
         [{"a": {"b": 2}}, ("a", "b")]
     ],)
-    def __init__(self) -> None:
-        """Instance initialiser"""
-        super().__init__()
-
     def test_access_nested_map(self, nested_map: Mapping,
                                path: Sequence, output: Any) -> bool:
         """This function tests access_nested_map"""
