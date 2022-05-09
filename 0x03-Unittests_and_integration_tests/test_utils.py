@@ -9,16 +9,19 @@ from parameterized import parameterized
 class TestAccessNestedMap(unittest.TestCase):
     """Tests utils.access_nested_map function"""
     @parameterized.expand([
-        [{"a": 1}, ("a",), 1],
-        [{"a": {"b": 2}}, ("a",)],
-        [{"a": {"b": 2}}, ("a", "b")]
-    ],)
+        ({"a": 1}, ("a",), 1),
+        ({"a": {"b": 2}}, ("a",)),
+        ({"a": {"b": 2}}, ("a", "b"))
+    ])
     def test_access_nested_map(self, nested_map: Mapping,
                                path: Sequence, output: Any) -> bool:
         """This function tests access_nested_map"""
-        return self.assertEqual(access_nested_map(nested_map, path), output)
+        self.assertEqual(access_nested_map(nested_map, path), output)
 
-    def test_access_nested_map_exception(self, nested_map,
+    def test_access_nested_map_exception(self, nested_map: Mapping,
                                          path: Sequence, output: Any) -> bool:
         """Tests to see if access_nasted_map raises exception"""
-        pass
+        with self.assertRaises(KeyError) as raised:
+            access_nested_map(nested_map, path)
+
+        self.assertEqual(str(raised.exception)[1:-1], output)
