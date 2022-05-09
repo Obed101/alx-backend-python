@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """This module parametizes a unit test"""
-import imp
 from typing import Any, Mapping, Sequence
 import unittest
 from utils import access_nested_map
+from parameterized import parameterized
 
 
 class TestAccessNestedMap(unittest.TestCase):
@@ -17,7 +17,12 @@ class TestAccessNestedMap(unittest.TestCase):
         """Instance initialiser"""
         super().__init__()
 
-    
-    def test_access_nested_map(self, nested_map: Mapping, path: Sequence, output) -> Any:
+    def test_access_nested_map(self, nested_map: Mapping,
+                               path: Sequence, output: Any) -> bool:
         """This function tests access_nested_map"""
         return self.assertEqual(access_nested_map(nested_map, path), output)
+
+    def test_access_nested_map_exception(self, nested_map,
+                                         path: Sequence, output: Any) -> bool:
+        """Tests to see if access_nasted_map raises exception"""
+        pass
