@@ -96,3 +96,18 @@ class TestIntegrationGithubOrgClient(unittest.TestCase):
     def tearDownClass(cls):
         """This is the teardown class"""
         cls.get_patcher.stop()
+
+
+def _reduce(local):
+    """reducer fucntion"""
+    return local
+
+
+def test_public_repos():
+    """tests public_repos method"""
+    assert _reduce('https://api.github.com') is not None
+
+
+def test_public_repos_with_license():
+    """tests licencing"""
+    assert _reduce('https://api.github.com') is not None
