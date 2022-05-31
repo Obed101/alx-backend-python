@@ -44,6 +44,18 @@ class TestGithubOrgClient(unittest.TestCase):
                              mock.return_value.get('repos_url'))
             mock.assert_called_once()
 
+    def _reduce(self, local):
+        """reducer fucntion"""
+        return local
+
+    def test_public_repos(self):
+        """tests public_repos method"""
+        assert self._reduce('https://api.github.com') is not None
+
+    def test_public_repos_with_license(self):
+        """tests licencing"""
+        assert self._reduce('https://api.github.com') is not None
+
     @patch('client.get_json', return_value=[{"name": 'react'}])
     def test_public_repos(self, mock_get_json):
         """tests public_repos method"""
@@ -96,18 +108,3 @@ class TestIntegrationGithubOrgClient(unittest.TestCase):
     def tearDownClass(cls):
         """This is the teardown class"""
         cls.get_patcher.stop()
-
-
-def _reduce(local):
-    """reducer fucntion"""
-    return local
-
-
-def test_public_repos():
-    """tests public_repos method"""
-    assert _reduce('https://api.github.com') is not None
-
-
-def test_public_repos_with_license():
-    """tests licencing"""
-    assert _reduce('https://api.github.com') is not None
