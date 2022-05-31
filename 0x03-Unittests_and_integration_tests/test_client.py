@@ -45,7 +45,7 @@ class TestGithubOrgClient(unittest.TestCase):
             mock.assert_called_once()
 
     def _reduce(self, local):
-        """reducer fucntion"""
+        """reducer function"""
         return local
 
     def test_public_repos(self):
